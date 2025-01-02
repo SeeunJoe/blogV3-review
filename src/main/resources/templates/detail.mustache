@@ -1,0 +1,22 @@
+{{> layout/header}}
+<section>
+  <form action="/board/{{model.id}}/delete" method="post" >
+    <button type="submit">삭제</button>
+  </form>
+  <!--
+        request에서 못가져옴 이미 detail페이지에 응답을 줌으로써 request객체 날라감
+        session에는 담을 수 있지만 ui에 따라 비지니스가 꼬임
+  -->
+  <form action="/board/{{model.id}}/update-form" method="get" >
+    <button type="submit">수정</button>
+  </form>
+  <div>
+    번호 : {{model.id}} <br>
+    제목 : {{model.title}} <br>
+    내용 : {{model.content}} <br>
+    작성일 : {{model.createdAt}} <br>
+  </div>
+</section>
+
+</body>
+</html>

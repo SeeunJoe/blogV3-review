@@ -1,0 +1,13 @@
+{{> layout/header}}
+<section>
+<!--  title=제목6&content=내용6 -&ndash;&gt; application/x-www-form-urlencoded
+      키값은 input tag의 name, value는 사용자의 입력값    -->
+  <form action="/save" method="post">
+    <input type="text" name="title" placeholder="제목" required><br>
+    <input type="text" name="content" placeholder="내용" required><br></br>
+    <button type="submit">글쓰기</button>
+  </form>
+</section>
+
+</body>
+</html>

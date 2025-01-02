@@ -1,0 +1,18 @@
+{{> layout/header}}
+<section>
+  <!--
+      request에서 못가져옴 이미 update-form페이지에 응답을 줌으로써 request객체 날라감
+      session에는 담을 수 있지만 ui에 따라 비지니스가 꼬임
+-->
+  <form action="/board/{{model.id}}/update" method="post" enctype="application/x-www-form-urlencoded">
+    <input type="text" name="id" value="{{model.id}}" readonly ><br>
+    <input type="text" name="title" value="{{model.title}}" ><br></br>
+    <input type="text" name="content" value="{{model.content}}" ><br></br>
+    <input type="text" name="createdAt" value="{{model.createdAt}}" readonly="true" ><br></br>
+    <button type="submit">글 수정하기</button>
+    <button type="submit">글 수정하기</button>
+  </form>
+</section>
+
+</body>
+</html>
