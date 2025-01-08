@@ -27,11 +27,8 @@ public class BoardRepository {
     return (Board) q.getSingleResult(); //한 건이라 single result
   }
 
-  public void save(String title, String content) {
-    Query q = em.createNativeQuery("insert into board_tb(title, content, created_at) values(?, ?, now())");
-    q.setParameter(1, title);
-    q.setParameter(2, content);
-    q.executeUpdate(); // insert해라
+  public void save(Board board) {  // board 객체를 만들어서 던지면 insert해준다.
+    em.persist(board);
   }
 
   public void delete(int id) {

@@ -34,7 +34,8 @@ public class BoardResponse {
     }
   }
 
-  public static class UpdateFormDTO {    private int id;
+  public static class UpdateFormDTO {
+    private int id;
     private String title;
     private String content;
     private String createdAt;

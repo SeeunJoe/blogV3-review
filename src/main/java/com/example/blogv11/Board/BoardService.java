@@ -34,8 +34,8 @@ public class BoardService {
 
   @Transactional
   public void 게시글쓰기(BoardRequest.SaveDTO saveDTO) {
-    boardRepository.save(saveDTO.getTitle(), saveDTO.getContent());
-  } // @Transactional이 commit 해준다 -> 메서드 내에 여러개가 있을 때 하나라도 실패하면 롤백 다 성공하면 커밋해줌
+    boardRepository.save(saveDTO.toEntity());
+  }
 
   @Transactional
   public void 게시글삭제하기(int id) {

@@ -42,7 +42,7 @@ public class BoardRepositoryTest {
     String content = "내용6";
 
     //when
-    boardRepository.save(title, content);
+//    boardRepository.save(title, content);
 
     //eye
     Board board = boardRepository.findById(6);

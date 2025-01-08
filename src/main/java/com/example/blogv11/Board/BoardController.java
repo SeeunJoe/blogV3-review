@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -42,15 +43,27 @@ public class BoardController {
 
   @PostMapping("/board/save")
   public String save(BoardRequest.SaveDTO saveDTO) {
+
+    boardService.게시글쓰기(saveDTO);
+
+    return "redirect:/";
+  }
+
+/*   BLOG VER1
+  @PostMapping("/board/save")
+  public void save(BoardRequest.SaveDTO saveDTO,HttpServletResponse response) throws IOException {
     // x-www 는 클래스로 받을 수 있다 -> BoardRequest.SaveDTO에 바로 바인딩
     //원래는 request.getparameter로 받아야한다.
 
     //@Data는 내부에 toString을 재정의해서 구현해준다. -> saveDTO만 적어도 saveDTO.toString한 결과가 나온다.
     System.out.println(saveDTO);
     boardService.게시글쓰기(saveDTO);
+    response.setStatus(302);
+    response.setHeader("Location","/");
 
-    return "redirect:/";
+//    return "redirect:/";
   }
+  }*/
 
   @PostMapping("/board/{id}/delete")
   public String delete(@PathVariable int id) {
