@@ -22,4 +22,9 @@ public class Board {
   private String content;
   @CreationTimestamp // native query에서는 안먹음
   private Timestamp createdAt;
+
+  public void update(String title, String content) {
+    this.title = title;
+    this.content = content;
+  }
 }
