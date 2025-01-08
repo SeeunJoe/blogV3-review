@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
@@ -16,15 +17,15 @@ public class BoardRepository {
   private final EntityManager em;
 
   public List<Board> findAll() {
-    // java의 field와 colum이 같아야 mapping됨
-    Query q = em.createNativeQuery("select * from board_tb order by id desc", Board.class);
-    return q.getResultList(); // 통신코드
+    return em.createQuery("select b from Board b order by b.id").getResultList();
   }
 
-  public Board findById(int id) {
-    Query q = em.createNativeQuery("select * from board_tb where id = ?", Board.class);
-    q.setParameter(1, id); //물음표 완성하기(물음표 순서, 물음표에 바인딩 될 변수값)
-    return (Board) q.getSingleResult(); //한 건이라 single result
+  public Optional<Board> findById(int id) {
+    // 프라이머리 키로 찾을 때는 find사용
+
+    // Optional이라는 선물박스로 감싼 걸 넘긴다. 안에는 null일수도 board일수도 있다. 선물박스는 null이 아님
+    return Optional.ofNullable(em.find(Board.class, id));
+
   }
 
   public void save(Board board) {  // board 객체를 만들어서 던지면 insert해준다.
@@ -32,17 +33,7 @@ public class BoardRepository {
   }
 
   public void delete(int id) {
-    Query q = em.createNativeQuery("delete from board_tb where id = ?");
-    q.setParameter(1, id);
-    q.executeUpdate(); //insert, delete, update 때 사용.
+    em.createQuery("delete from Board b where b.id = :id").setParameter("id", id).executeUpdate();
   }
 
-
-  public void update(int id, String title, String content) {
-    Query q = em.createNativeQuery("update board_tb set title = ?, content = ? where id = ?");
-    q.setParameter(1, title);
-    q.setParameter(2, content);
-    q.setParameter(3, id);
-    q.executeUpdate();
-  }
 }
