@@ -45,10 +45,10 @@ public class BoardRepositoryTest {
 //    boardRepository.save(title, content);
 
     //eye
-    Board board = boardRepository.findById(6);
+/*    Board board = boardRepository.findById(6);
     System.out.println(board.getId());
     System.out.println(board.getTitle());
-    System.out.println(board.getContent());
+    System.out.println(board.getContent());*/
 
   } // rollback(@Transactional) -> @DataJpaTest의 meta@에 @Transactional이 존재
 
