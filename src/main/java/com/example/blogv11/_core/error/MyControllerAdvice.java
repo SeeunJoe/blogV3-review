@@ -1,5 +1,7 @@
 package com.example.blogv11._core.error;
 
+import com.example.blogv11._core.error.ex.Exception400;
+import com.example.blogv11._core.error.ex.Exception404;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,13 +18,29 @@ public class MyControllerAdvice {
      * -> reflection의 연산을 줄이기 위해 @ExceptionHandler(RuntimeException.class)를 붙여준다
      */
     @ResponseBody
-    @ExceptionHandler(RuntimeException.class)
-    public String err(RuntimeException e){
+    @ExceptionHandler(Exception400.class)
+    public String err400(RuntimeException e){
 
          //StringBuilder builder = new StringBuilder(); // 문자열을 더하는 builder pattern
         /**
          * springboot는 기본응답 html
          */
+        System.out.println("error400");
+        String body = """
+                <script>
+                    alert('${msg}');
+                    history.back();
+                </script>
+                """.replace("${msg}",e.getMessage());
+
+        return body;
+    }
+
+    @ResponseBody
+    @ExceptionHandler(Exception404.class)
+    public String err404(RuntimeException e){
+
+        System.out.println("error404");
         String body = """
                 <script>
                     alert('${msg}');
