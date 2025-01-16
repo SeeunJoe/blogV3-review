@@ -17,6 +17,9 @@ public class BoardController {
 
   private final BoardService boardService;
 
+
+
+
   @GetMapping("/")
   public String list(Model model) { //DS(request객체를 model이라는 객체로 랩핑해서 전달해준다)
     List<BoardResponse.DTO> boardList = boardService.게시글목록보기();
@@ -43,6 +46,12 @@ public class BoardController {
 
   @PostMapping("/board/save")
   public String save(BoardRequest.SaveDTO saveDTO) {
+
+    // TODO: 나중에 삭제하기
+    if(saveDTO.getTitle().isBlank()){
+      throw new RuntimeException("title에 공백 혹은 null이 들어갈 수 없습니다");
+    }
+    // 나중에 잡지 못한 에러들 다 runtimeException으로 들어간다.
 
     boardService.게시글쓰기(saveDTO);
 

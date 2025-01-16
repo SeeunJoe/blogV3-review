@@ -1,8 +1,7 @@
-package com.example.blogv11._core;
+package com.example.blogv11._core.util;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class MyDate {
 

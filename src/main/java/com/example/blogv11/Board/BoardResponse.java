@@ -2,7 +2,7 @@ package com.example.blogv11.Board;
 
 import lombok.Data;
 
-import static com.example.blogv11._core.MyDate.formatDate;
+import static com.example.blogv11._core.util.MyDate.formatDate;
 
 public class BoardResponse {
 

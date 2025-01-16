@@ -18,6 +18,7 @@ public class Board {
   @Id //jakarta
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  @Column(nullable = false)
   private String title;
   private String content;
   @CreationTimestamp // native query에서는 안먹음
