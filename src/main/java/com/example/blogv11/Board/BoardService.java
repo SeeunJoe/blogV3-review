@@ -24,7 +24,6 @@ public class BoardService {
       BoardResponse.DTO dto = new BoardResponse.DTO(board);
       dtos.add(dto);
     }
-
     return dtos;
   }
 
@@ -58,5 +57,3 @@ public class BoardService {
     // 영속화된 객체상태 변경 - update + commit => 더티체킹
   }
 }
-
-

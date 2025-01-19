@@ -1,5 +1,6 @@
 package com.example.blogv11.Board;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 public class BoardRequest {
@@ -8,7 +9,9 @@ public class BoardRequest {
 
   @Data
   public static class SaveDTO{
+    @NotBlank(message = "야 비우지마") // NotBlank는 공백,띄어쓰기도 안됨
     private String title;
+    @NotBlank(message = "내용 공백 안됨") // -> @validation을 붙여줘야 작동한다.
     private String content;
     // 외부에서 들어온 dto를 model로 변경해서 db로 보낸다.
     public Board toEntity(){

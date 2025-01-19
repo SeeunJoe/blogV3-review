@@ -19,7 +19,7 @@ public class MyControllerAdvice {
      */
     @ResponseBody
     @ExceptionHandler(Exception400.class)
-    public String err400(RuntimeException e){
+    public String err400(Exception400 e){
 
          //StringBuilder builder = new StringBuilder(); // 문자열을 더하는 builder pattern
         /**
@@ -38,7 +38,7 @@ public class MyControllerAdvice {
 
     @ResponseBody
     @ExceptionHandler(Exception404.class)
-    public String err404(RuntimeException e){
+    public String err404(Exception404 e){
 
         System.out.println("error404");
         String body = """
